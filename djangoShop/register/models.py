@@ -11,8 +11,20 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
+    def create_superuser(self, email, password, username):
+
+        user = self.create_user(
+            email = email,
+            username=username,
+            password=password,
+        )
+
+        user.is_superuser = True
+        user.is_staff = True
+        user.save(using=self._db)
+        return user
 class Register(AbstractUser):
-    email = models.EmailField(null=False, unique=True)
+    email = models.EmailField(null=False) #unique=True забрав для лоігна через github з своєю поштою
     username = models.CharField(max_length=25, unique=True)
     password = models.CharField(max_length=25)
 

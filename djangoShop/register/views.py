@@ -13,9 +13,9 @@ from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
 
-@login_required
-def profile_view(request):
-    return render(request, 'register/profile.html')
+# @login_required
+# def profile_view(request):
+#     return render(request, 'register/profile.html')
 
 
 
@@ -38,3 +38,5 @@ class RegisterView(FormView):
 def home(request):
     return render(request, 'register/home.html')
 
+def profile_view(request):
+    return render(request, 'register/profile.html')
